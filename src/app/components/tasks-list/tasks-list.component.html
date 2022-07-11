@@ -1,0 +1,28 @@
+<ul class="task-filters">
+  <li routerLink="/tasks">
+    <a [class.active]="status == 0">
+      View All
+      <i class="fa-solid fa-bars-staggered"></i>
+    </a>
+  </li>
+  <li [routerLink]="['/tasks', {completed : false}]">
+    <a [class.active]="status == -1">In Progress
+      <i class="fa-solid fa-bars-progress"></i>
+    </a>
+  </li>
+  <li [routerLink]="['/tasks', {completed : true}]">
+    <a [class.active]="status == 1">Completed
+      <i class="fa-solid fa-list-check"></i>
+    </a>
+  </li>
+</ul>
+
+<div class="task-list">
+  <app-tasks-item
+    *ngFor="let task of tasks"
+    [task]="task"
+    (setStatus)="setStatus.emit(task)"
+    (delete)="delete.emit(task.id)"
+    (update)="update.emit(task)"
+  ></app-tasks-item>
+</div>

@@ -1,0 +1,15 @@
+<div class="g-row">
+  <div class="g-col">
+    <!-- Form Add -->
+    <app-tasks-form (addTask)="addTask($event)"></app-tasks-form>
+  </div>
+  <div class="g-col">
+        <!-- List -->
+    <app-tasks-list 
+    [tasks]="tasks"
+    (setStatus)="setStatus($event)"
+    (delete)="onDelete($event)"
+    (update)="onUpdate($event)"
+    ></app-tasks-list>
+  </div>
+</div>
